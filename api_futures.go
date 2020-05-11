@@ -11,12 +11,12 @@ package gateapi
 
 import (
 	"context"
+	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -53,7 +53,7 @@ func (a *FuturesApiService) CancelFuturesOrder(ctx context.Context, settle strin
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -81,7 +81,7 @@ func (a *FuturesApiService) CancelFuturesOrder(ctx context.Context, settle strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -154,7 +154,7 @@ func (a *FuturesApiService) CancelFuturesOrders(ctx context.Context, settle stri
 		localVarQueryParams.Add("side", parameterToString(localVarOptionals.Side.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -182,7 +182,7 @@ func (a *FuturesApiService) CancelFuturesOrders(ctx context.Context, settle stri
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -244,7 +244,7 @@ func (a *FuturesApiService) CancelPriceTriggeredOrder(ctx context.Context, settl
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -272,7 +272,7 @@ func (a *FuturesApiService) CancelPriceTriggeredOrder(ctx context.Context, settl
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -334,7 +334,7 @@ func (a *FuturesApiService) CancelPriceTriggeredOrderList(ctx context.Context, s
 
 	localVarQueryParams.Add("contract", parameterToString(contract, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -362,7 +362,7 @@ func (a *FuturesApiService) CancelPriceTriggeredOrderList(ctx context.Context, s
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -454,7 +454,7 @@ func (a *FuturesApiService) CreateFuturesOrder(ctx context.Context, settle strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -545,7 +545,7 @@ func (a *FuturesApiService) CreatePriceTriggeredOrder(ctx context.Context, settl
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -607,7 +607,7 @@ func (a *FuturesApiService) GetFuturesContract(ctx context.Context, settle strin
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -624,7 +624,7 @@ func (a *FuturesApiService) GetFuturesContract(ctx context.Context, settle strin
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -635,7 +635,7 @@ func (a *FuturesApiService) GetFuturesContract(ctx context.Context, settle strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -698,7 +698,7 @@ func (a *FuturesApiService) GetFuturesOrder(ctx context.Context, settle string, 
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -726,7 +726,7 @@ func (a *FuturesApiService) GetFuturesOrder(ctx context.Context, settle string, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -775,9 +775,9 @@ FuturesApiService List personal trading history
 
 type GetMyTradesOpts struct {
 	Contract optional.String
-	Order optional.Int32
-	Limit optional.Int32
-	LastId optional.String
+	Order    optional.Int32
+	Limit    optional.Int32
+	LastId   optional.String
 }
 
 func (a *FuturesApiService) GetMyTrades(ctx context.Context, settle string, localVarOptionals *GetMyTradesOpts) ([]MyFuturesTrade, *http.Response, error) {
@@ -811,7 +811,7 @@ func (a *FuturesApiService) GetMyTrades(ctx context.Context, settle string, loca
 		localVarQueryParams.Add("last_id", parameterToString(localVarOptionals.LastId.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -839,7 +839,7 @@ func (a *FuturesApiService) GetMyTrades(ctx context.Context, settle string, loca
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -901,7 +901,7 @@ func (a *FuturesApiService) GetPosition(ctx context.Context, settle string, cont
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -929,7 +929,7 @@ func (a *FuturesApiService) GetPosition(ctx context.Context, settle string, cont
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -991,7 +991,7 @@ func (a *FuturesApiService) GetPriceTriggeredOrder(ctx context.Context, settle s
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1019,7 +1019,7 @@ func (a *FuturesApiService) GetPriceTriggeredOrder(ctx context.Context, settle s
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1068,8 +1068,8 @@ FuturesApiService Query account book
 
 type ListFuturesAccountBookOpts struct {
 	Limit optional.Int32
-	From optional.Int32
-	To optional.Int32
+	From  optional.Int32
+	To    optional.Int32
 	Type_ optional.String
 }
 
@@ -1104,7 +1104,7 @@ func (a *FuturesApiService) ListFuturesAccountBook(ctx context.Context, settle s
 		localVarQueryParams.Add("type", parameterToString(localVarOptionals.Type_.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1132,7 +1132,7 @@ func (a *FuturesApiService) ListFuturesAccountBook(ctx context.Context, settle s
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1192,7 +1192,7 @@ func (a *FuturesApiService) ListFuturesAccounts(ctx context.Context, settle stri
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string,0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1220,7 +1220,7 @@ func (a *FuturesApiService) ListFuturesAccounts(ctx context.Context, settle stri
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1270,9 +1270,9 @@ Return specified contract candlesticks. If prefix &#x60;contract&#x60; with &#x6
 */
 
 type ListFuturesCandlesticksOpts struct {
-	From optional.Float32
-	To optional.Float32
-	Limit optional.Int32
+	From     optional.Float32
+	To       optional.Float32
+	Limit    optional.Int32
 	Interval optional.String
 }
 
@@ -1308,7 +1308,7 @@ func (a *FuturesApiService) ListFuturesCandlesticks(ctx context.Context, settle 
 		localVarQueryParams.Add("interval", parameterToString(localVarOptionals.Interval.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1325,7 +1325,7 @@ func (a *FuturesApiService) ListFuturesCandlesticks(ctx context.Context, settle 
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1336,7 +1336,7 @@ func (a *FuturesApiService) ListFuturesCandlesticks(ctx context.Context, settle 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1396,7 +1396,7 @@ func (a *FuturesApiService) ListFuturesContracts(ctx context.Context, settle str
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1413,7 +1413,7 @@ func (a *FuturesApiService) ListFuturesContracts(ctx context.Context, settle str
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1424,7 +1424,7 @@ func (a *FuturesApiService) ListFuturesContracts(ctx context.Context, settle str
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1496,7 +1496,7 @@ func (a *FuturesApiService) ListFuturesFundingRateHistory(ctx context.Context, s
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1513,7 +1513,7 @@ func (a *FuturesApiService) ListFuturesFundingRateHistory(ctx context.Context, s
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1524,7 +1524,7 @@ func (a *FuturesApiService) ListFuturesFundingRateHistory(ctx context.Context, s
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1594,7 +1594,7 @@ func (a *FuturesApiService) ListFuturesInsuranceLedger(ctx context.Context, sett
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1611,7 +1611,7 @@ func (a *FuturesApiService) ListFuturesInsuranceLedger(ctx context.Context, sett
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1622,7 +1622,7 @@ func (a *FuturesApiService) ListFuturesInsuranceLedger(ctx context.Context, sett
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1671,7 +1671,7 @@ Bids will be sorted by price from high to low, while asks sorted reversely
 
 type ListFuturesOrderBookOpts struct {
 	Interval optional.String
-	Limit optional.Int32
+	Limit    optional.Int32
 }
 
 func (a *FuturesApiService) ListFuturesOrderBook(ctx context.Context, settle string, contract string, localVarOptionals *ListFuturesOrderBookOpts) (FuturesOrderBook, *http.Response, error) {
@@ -1700,7 +1700,7 @@ func (a *FuturesApiService) ListFuturesOrderBook(ctx context.Context, settle str
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1717,7 +1717,7 @@ func (a *FuturesApiService) ListFuturesOrderBook(ctx context.Context, settle str
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1728,7 +1728,7 @@ func (a *FuturesApiService) ListFuturesOrderBook(ctx context.Context, settle str
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1777,7 +1777,7 @@ Zero-fill order cannot be retrieved 60 seconds after cancellation
 */
 
 type ListFuturesOrdersOpts struct {
-	Limit optional.Int32
+	Limit  optional.Int32
 	LastId optional.String
 }
 
@@ -1808,7 +1808,7 @@ func (a *FuturesApiService) ListFuturesOrders(ctx context.Context, settle string
 		localVarQueryParams.Add("last_id", parameterToString(localVarOptionals.LastId.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1836,7 +1836,7 @@ func (a *FuturesApiService) ListFuturesOrders(ctx context.Context, settle string
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1906,7 +1906,7 @@ func (a *FuturesApiService) ListFuturesTickers(ctx context.Context, settle strin
 		localVarQueryParams.Add("contract", parameterToString(localVarOptionals.Contract.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1923,7 +1923,7 @@ func (a *FuturesApiService) ListFuturesTickers(ctx context.Context, settle strin
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1934,7 +1934,7 @@ func (a *FuturesApiService) ListFuturesTickers(ctx context.Context, settle strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1977,16 +1977,16 @@ FuturesApiService Futures trading history
  * @param optional nil or *ListFuturesTradesOpts - Optional Parameters:
  * @param "Limit" (optional.Int32) -  Maximum number of record returned in one list
  * @param "LastId" (optional.String) -  Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
- * @param "From" (optional.Float32) -  Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
+ * @param "From" (optional.Float32) -  Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned.
  * @param "To" (optional.Float32) -  Specify end time in Unix seconds, default to current time
 @return []FuturesTrade
 */
 
 type ListFuturesTradesOpts struct {
-	Limit optional.Int32
+	Limit  optional.Int32
 	LastId optional.String
-	From optional.Float32
-	To optional.Float32
+	From   optional.Float32
+	To     optional.Float32
 }
 
 func (a *FuturesApiService) ListFuturesTrades(ctx context.Context, settle string, contract string, localVarOptionals *ListFuturesTradesOpts) ([]FuturesTrade, *http.Response, error) {
@@ -2021,7 +2021,7 @@ func (a *FuturesApiService) ListFuturesTrades(ctx context.Context, settle string
 		localVarQueryParams.Add("to", parameterToString(localVarOptionals.To.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2038,7 +2038,7 @@ func (a *FuturesApiService) ListFuturesTrades(ctx context.Context, settle string
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -2049,7 +2049,7 @@ func (a *FuturesApiService) ListFuturesTrades(ctx context.Context, settle string
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -2097,8 +2097,8 @@ FuturesApiService List liquidation history
 
 type ListLiquidatesOpts struct {
 	Contract optional.String
-	Limit optional.Int32
-	At optional.Int32
+	Limit    optional.Int32
+	At       optional.Int32
 }
 
 func (a *FuturesApiService) ListLiquidates(ctx context.Context, settle string, localVarOptionals *ListLiquidatesOpts) ([]FuturesLiquidate, *http.Response, error) {
@@ -2129,7 +2129,7 @@ func (a *FuturesApiService) ListLiquidates(ctx context.Context, settle string, l
 		localVarQueryParams.Add("at", parameterToString(localVarOptionals.At.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2157,7 +2157,7 @@ func (a *FuturesApiService) ListLiquidates(ctx context.Context, settle string, l
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -2204,7 +2204,7 @@ FuturesApiService List position close history
 
 type ListPositionCloseOpts struct {
 	Contract optional.String
-	Limit optional.Int32
+	Limit    optional.Int32
 }
 
 func (a *FuturesApiService) ListPositionClose(ctx context.Context, settle string, localVarOptionals *ListPositionCloseOpts) ([]PositionClose, *http.Response, error) {
@@ -2232,7 +2232,7 @@ func (a *FuturesApiService) ListPositionClose(ctx context.Context, settle string
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2260,7 +2260,7 @@ func (a *FuturesApiService) ListPositionClose(ctx context.Context, settle string
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -2320,7 +2320,7 @@ func (a *FuturesApiService) ListPositions(ctx context.Context, settle string) ([
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2348,7 +2348,7 @@ func (a *FuturesApiService) ListPositions(ctx context.Context, settle string) ([
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -2397,8 +2397,8 @@ FuturesApiService List all auto orders
 
 type ListPriceTriggeredOrdersOpts struct {
 	Contract optional.String
-	Limit optional.Int32
-	Offset optional.Int32
+	Limit    optional.Int32
+	Offset   optional.Int32
 }
 
 func (a *FuturesApiService) ListPriceTriggeredOrders(ctx context.Context, settle string, status string, localVarOptionals *ListPriceTriggeredOrdersOpts) ([]FuturesPriceTriggeredOrder, *http.Response, error) {
@@ -2430,7 +2430,7 @@ func (a *FuturesApiService) ListPriceTriggeredOrders(ctx context.Context, settle
 		localVarQueryParams.Add("offset", parameterToString(localVarOptionals.Offset.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2458,7 +2458,7 @@ func (a *FuturesApiService) ListPriceTriggeredOrders(ctx context.Context, settle
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -2522,7 +2522,7 @@ func (a *FuturesApiService) UpdatePositionLeverage(ctx context.Context, settle s
 
 	localVarQueryParams.Add("leverage", parameterToString(leverage, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2550,7 +2550,7 @@ func (a *FuturesApiService) UpdatePositionLeverage(ctx context.Context, settle s
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -2614,7 +2614,7 @@ func (a *FuturesApiService) UpdatePositionMargin(ctx context.Context, settle str
 
 	localVarQueryParams.Add("change", parameterToString(change, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2642,7 +2642,7 @@ func (a *FuturesApiService) UpdatePositionMargin(ctx context.Context, settle str
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -2706,7 +2706,7 @@ func (a *FuturesApiService) UpdatePositionRiskLimit(ctx context.Context, settle 
 
 	localVarQueryParams.Add("risk_limit", parameterToString(riskLimit, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -2734,7 +2734,7 @@ func (a *FuturesApiService) UpdatePositionRiskLimit(ctx context.Context, settle 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

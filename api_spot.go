@@ -81,7 +81,7 @@ func (a *SpotApiService) CancelBatchOrders(ctx context.Context, cancelOrder []Ca
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -171,7 +171,7 @@ func (a *SpotApiService) CancelOrder(ctx context.Context, orderId string, curren
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -274,7 +274,7 @@ func (a *SpotApiService) CancelOrders(ctx context.Context, currencyPair string, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -364,7 +364,7 @@ func (a *SpotApiService) CreateBatchOrders(ctx context.Context, order []Order) (
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -453,7 +453,7 @@ func (a *SpotApiService) CreateOrder(ctx context.Context, order Order) (Order, *
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -530,7 +530,7 @@ func (a *SpotApiService) GetCurrencyPair(ctx context.Context, currencyPair strin
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -541,7 +541,7 @@ func (a *SpotApiService) GetCurrencyPair(ctx context.Context, currencyPair strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -631,7 +631,7 @@ func (a *SpotApiService) GetOrder(ctx context.Context, orderId string, currencyP
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -734,7 +734,7 @@ func (a *SpotApiService) ListCandlesticks(ctx context.Context, currencyPair stri
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -745,7 +745,7 @@ func (a *SpotApiService) ListCandlesticks(ctx context.Context, currencyPair stri
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -820,7 +820,7 @@ func (a *SpotApiService) ListCurrencyPairs(ctx context.Context) ([]CurrencyPair,
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -831,7 +831,7 @@ func (a *SpotApiService) ListCurrencyPairs(ctx context.Context) ([]CurrencyPair,
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -939,7 +939,7 @@ func (a *SpotApiService) ListMyTrades(ctx context.Context, currencyPair string, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1032,7 +1032,7 @@ func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string,
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1043,7 +1043,7 @@ func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string,
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1148,7 +1148,7 @@ func (a *SpotApiService) ListOrders(ctx context.Context, currencyPair string, st
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1244,7 +1244,7 @@ func (a *SpotApiService) ListSpotAccounts(ctx context.Context, localVarOptionals
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1330,7 +1330,7 @@ func (a *SpotApiService) ListTickers(ctx context.Context, localVarOptionals *Lis
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1341,7 +1341,7 @@ func (a *SpotApiService) ListTickers(ctx context.Context, localVarOptionals *Lis
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1433,7 +1433,7 @@ func (a *SpotApiService) ListTrades(ctx context.Context, currencyPair string, lo
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1444,7 +1444,7 @@ func (a *SpotApiService) ListTrades(ctx context.Context, currencyPair string, lo
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

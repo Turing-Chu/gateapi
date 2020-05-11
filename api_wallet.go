@@ -56,7 +56,7 @@ func (a *WalletApiService) Transfer(ctx context.Context, transfer Transfer) (*ht
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{}
+	localVarHttpHeaderAccepts := make([]string, 0)
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -77,7 +77,7 @@ func (a *WalletApiService) Transfer(ctx context.Context, transfer Transfer) (*ht
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
 	}
@@ -124,7 +124,7 @@ func (a *WalletApiService) TransferWithSubAccount(ctx context.Context, subAccoun
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{}
+	localVarHttpHeaderAccepts := make([]string, 0)
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -145,7 +145,7 @@ func (a *WalletApiService) TransferWithSubAccount(ctx context.Context, subAccoun
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarHttpResponse, err
 	}
