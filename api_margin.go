@@ -54,7 +54,7 @@ func (a *MarginApiService) CancelLoan(ctx context.Context, loanId string, curren
 
 	localVarQueryParams.Add("currency", parameterToString(currency, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -82,7 +82,7 @@ func (a *MarginApiService) CancelLoan(ctx context.Context, loanId string, curren
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -171,7 +171,7 @@ func (a *MarginApiService) CreateLoan(ctx context.Context, loan Loan) (Loan, *ht
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -233,7 +233,7 @@ func (a *MarginApiService) GetLoan(ctx context.Context, loanId string, side stri
 
 	localVarQueryParams.Add("side", parameterToString(side, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -261,7 +261,7 @@ func (a *MarginApiService) GetLoan(ctx context.Context, loanId string, side stri
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -323,7 +323,7 @@ func (a *MarginApiService) GetLoanRecord(ctx context.Context, loanRecordId strin
 
 	localVarQueryParams.Add("loan_id", parameterToString(loanId, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -351,7 +351,7 @@ func (a *MarginApiService) GetLoanRecord(ctx context.Context, loanRecordId strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -419,7 +419,7 @@ func (a *MarginApiService) ListFundingAccounts(ctx context.Context, localVarOpti
 		localVarQueryParams.Add("currency", parameterToString(localVarOptionals.Currency.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -447,7 +447,7 @@ func (a *MarginApiService) ListFundingAccounts(ctx context.Context, localVarOpti
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -507,7 +507,7 @@ func (a *MarginApiService) ListFundingBook(ctx context.Context, currency string)
 
 	localVarQueryParams.Add("currency", parameterToString(currency, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -524,7 +524,7 @@ func (a *MarginApiService) ListFundingBook(ctx context.Context, currency string)
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -535,7 +535,7 @@ func (a *MarginApiService) ListFundingBook(ctx context.Context, currency string)
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -615,7 +615,7 @@ func (a *MarginApiService) ListLoanRecords(ctx context.Context, loanId string, l
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -643,7 +643,7 @@ func (a *MarginApiService) ListLoanRecords(ctx context.Context, loanId string, l
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -703,7 +703,7 @@ func (a *MarginApiService) ListLoanRepayments(ctx context.Context, loanId string
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -731,7 +731,7 @@ func (a *MarginApiService) ListLoanRepayments(ctx context.Context, loanId string
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -828,7 +828,7 @@ func (a *MarginApiService) ListLoans(ctx context.Context, status string, side st
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -856,7 +856,7 @@ func (a *MarginApiService) ListLoans(ctx context.Context, status string, side st
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -924,7 +924,7 @@ func (a *MarginApiService) ListMarginAccounts(ctx context.Context, localVarOptio
 		localVarQueryParams.Add("currency_pair", parameterToString(localVarOptionals.CurrencyPair.Value(), ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -952,7 +952,7 @@ func (a *MarginApiService) ListMarginAccounts(ctx context.Context, localVarOptio
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1010,7 +1010,7 @@ func (a *MarginApiService) ListMarginCurrencyPairs(ctx context.Context) ([]Margi
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1027,7 +1027,7 @@ func (a *MarginApiService) ListMarginCurrencyPairs(ctx context.Context) ([]Margi
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams,
-		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, false)
+		localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes, true)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1038,7 +1038,7 @@ func (a *MarginApiService) ListMarginCurrencyPairs(ctx context.Context) ([]Margi
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1100,7 +1100,7 @@ func (a *MarginApiService) MergeLoans(ctx context.Context, currency string, ids 
 	localVarQueryParams.Add("currency", parameterToString(currency, ""))
 	localVarQueryParams.Add("ids", parameterToString(ids, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := make([]string, 0)
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -1128,7 +1128,7 @@ func (a *MarginApiService) MergeLoans(ctx context.Context, currency string, ids 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1219,7 +1219,7 @@ func (a *MarginApiService) RepayLoan(ctx context.Context, loanId string, repayRe
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1311,7 +1311,7 @@ func (a *MarginApiService) UpdateLoan(ctx context.Context, loanId string, loanPa
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1403,7 +1403,7 @@ func (a *MarginApiService) UpdateLoanRecord(ctx context.Context, loanRecordId st
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ =  localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
