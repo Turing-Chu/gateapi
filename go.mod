@@ -1,4 +1,4 @@
-module github.com/Turing-Chu/gateio-api
+module github.com/Turing-Chu/gateapi
 
 go 1.14
 
