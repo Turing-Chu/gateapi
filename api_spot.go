@@ -11,12 +11,13 @@ package gateapi
 
 import (
 	"context"
+	"errors"
+	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -81,7 +82,7 @@ func (a *SpotApiService) CancelBatchOrders(ctx context.Context, cancelOrder []Ca
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -96,12 +97,12 @@ func (a *SpotApiService) CancelBatchOrders(ctx context.Context, cancelOrder []Ca
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -110,7 +111,7 @@ func (a *SpotApiService) CancelBatchOrders(ctx context.Context, cancelOrder []Ca
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -171,7 +172,7 @@ func (a *SpotApiService) CancelOrder(ctx context.Context, orderId string, curren
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -186,12 +187,12 @@ func (a *SpotApiService) CancelOrder(ctx context.Context, orderId string, curren
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -200,7 +201,7 @@ func (a *SpotApiService) CancelOrder(ctx context.Context, orderId string, curren
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -217,7 +218,7 @@ SpotApiService Cancel all `open` orders in specified currency pair
 */
 
 type CancelOrdersOpts struct {
-	Side optional.String
+	Side    optional.String
 	Account optional.String
 }
 
@@ -274,7 +275,7 @@ func (a *SpotApiService) CancelOrders(ctx context.Context, currencyPair string, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -289,12 +290,12 @@ func (a *SpotApiService) CancelOrders(ctx context.Context, currencyPair string, 
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -303,7 +304,7 @@ func (a *SpotApiService) CancelOrders(ctx context.Context, currencyPair string, 
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -311,7 +312,7 @@ func (a *SpotApiService) CancelOrders(ctx context.Context, currencyPair string, 
 
 /*
 SpotApiService Create a batch of orders
-Batch orders requirements:  1. custom order field &#x60;text&#x60; is required 2. At most 4 currency pairs, maximum 5 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. &#x60;account&#x60; must be identical for all orders 
+Batch orders requirements:  1. custom order field &#x60;text&#x60; is required 2. At most 4 currency pairs, maximum 5 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. &#x60;account&#x60; must be identical for all orders
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param order
 @return []BatchOrder
@@ -364,7 +365,7 @@ func (a *SpotApiService) CreateBatchOrders(ctx context.Context, order []Order) (
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -379,12 +380,12 @@ func (a *SpotApiService) CreateBatchOrders(ctx context.Context, order []Order) (
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -393,7 +394,7 @@ func (a *SpotApiService) CreateBatchOrders(ctx context.Context, order []Order) (
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -453,7 +454,7 @@ func (a *SpotApiService) CreateOrder(ctx context.Context, order Order) (Order, *
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -468,12 +469,12 @@ func (a *SpotApiService) CreateOrder(ctx context.Context, order Order) (Order, *
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -482,7 +483,7 @@ func (a *SpotApiService) CreateOrder(ctx context.Context, order Order) (Order, *
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -541,7 +542,7 @@ func (a *SpotApiService) GetCurrencyPair(ctx context.Context, currencyPair strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -556,12 +557,12 @@ func (a *SpotApiService) GetCurrencyPair(ctx context.Context, currencyPair strin
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -570,7 +571,7 @@ func (a *SpotApiService) GetCurrencyPair(ctx context.Context, currencyPair strin
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -631,7 +632,7 @@ func (a *SpotApiService) GetOrder(ctx context.Context, orderId string, currencyP
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -646,12 +647,12 @@ func (a *SpotApiService) GetOrder(ctx context.Context, orderId string, currencyP
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -660,7 +661,7 @@ func (a *SpotApiService) GetOrder(ctx context.Context, orderId string, currencyP
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -680,9 +681,9 @@ Maximum of 1000 points are returned in one query. Be sure not to exceed the limi
 */
 
 type ListCandlesticksOpts struct {
-	Limit optional.Int32
-	From optional.Int64
-	To optional.Int64
+	Limit    optional.Int32
+	From     optional.Int64
+	To       optional.Int64
 	Interval optional.String
 }
 
@@ -745,7 +746,7 @@ func (a *SpotApiService) ListCandlesticks(ctx context.Context, currencyPair stri
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -760,12 +761,12 @@ func (a *SpotApiService) ListCandlesticks(ctx context.Context, currencyPair stri
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -774,7 +775,7 @@ func (a *SpotApiService) ListCandlesticks(ctx context.Context, currencyPair stri
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -831,7 +832,7 @@ func (a *SpotApiService) ListCurrencyPairs(ctx context.Context) ([]CurrencyPair,
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -846,12 +847,12 @@ func (a *SpotApiService) ListCurrencyPairs(ctx context.Context) ([]CurrencyPair,
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -860,7 +861,7 @@ func (a *SpotApiService) ListCurrencyPairs(ctx context.Context) ([]CurrencyPair,
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -878,8 +879,8 @@ SpotApiService List personal trading history
 */
 
 type ListMyTradesOpts struct {
-	Limit optional.Int32
-	Page optional.Int32
+	Limit   optional.Int32
+	Page    optional.Int32
 	OrderId optional.String
 }
 
@@ -939,7 +940,7 @@ func (a *SpotApiService) ListMyTrades(ctx context.Context, currencyPair string, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -954,12 +955,12 @@ func (a *SpotApiService) ListMyTrades(ctx context.Context, currencyPair string, 
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -968,7 +969,7 @@ func (a *SpotApiService) ListMyTrades(ctx context.Context, currencyPair string, 
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -987,7 +988,7 @@ Order book will be sorted by price from high to low on bids; reversed on asks
 
 type ListOrderBookOpts struct {
 	Interval optional.String
-	Limit optional.Int32
+	Limit    optional.Int32
 }
 
 func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string, localVarOptionals *ListOrderBookOpts) (OrderBook, *http.Response, error) {
@@ -1043,7 +1044,7 @@ func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string,
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1058,12 +1059,12 @@ func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string,
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1072,7 +1073,7 @@ func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string,
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1082,7 +1083,7 @@ func (a *SpotApiService) ListOrderBook(ctx context.Context, currencyPair string,
 SpotApiService List orders
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param currencyPair Currency pair
- * @param status List orders based on status  `open` - order is waiting to be filled `finished` - order has been filled or cancelled 
+ * @param status List orders based on status  `open` - order is waiting to be filled `finished` - order has been filled or cancelled
  * @param optional nil or *ListOrdersOpts - Optional Parameters:
  * @param "Page" (optional.Int32) -  Page number
  * @param "Limit" (optional.Int32) -  Maximum number of record returned in one list
@@ -1090,7 +1091,7 @@ SpotApiService List orders
 */
 
 type ListOrdersOpts struct {
-	Page optional.Int32
+	Page  optional.Int32
 	Limit optional.Int32
 }
 
@@ -1148,7 +1149,7 @@ func (a *SpotApiService) ListOrders(ctx context.Context, currencyPair string, st
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1163,12 +1164,12 @@ func (a *SpotApiService) ListOrders(ctx context.Context, currencyPair string, st
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1177,7 +1178,7 @@ func (a *SpotApiService) ListOrders(ctx context.Context, currencyPair string, st
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1244,7 +1245,7 @@ func (a *SpotApiService) ListSpotAccounts(ctx context.Context, localVarOptionals
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1259,12 +1260,12 @@ func (a *SpotApiService) ListSpotAccounts(ctx context.Context, localVarOptionals
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1273,7 +1274,7 @@ func (a *SpotApiService) ListSpotAccounts(ctx context.Context, localVarOptionals
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1341,7 +1342,7 @@ func (a *SpotApiService) ListTickers(ctx context.Context, localVarOptionals *Lis
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1356,12 +1357,12 @@ func (a *SpotApiService) ListTickers(ctx context.Context, localVarOptionals *Lis
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1370,7 +1371,7 @@ func (a *SpotApiService) ListTickers(ctx context.Context, localVarOptionals *Lis
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1387,7 +1388,7 @@ SpotApiService Retrieve market trades
 */
 
 type ListTradesOpts struct {
-	Limit optional.Int32
+	Limit  optional.Int32
 	LastId optional.String
 }
 
@@ -1444,7 +1445,7 @@ func (a *SpotApiService) ListTrades(ctx context.Context, currencyPair string, lo
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1459,12 +1460,12 @@ func (a *SpotApiService) ListTrades(ctx context.Context, currencyPair string, lo
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1473,7 +1474,7 @@ func (a *SpotApiService) ListTrades(ctx context.Context, currencyPair string, lo
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil

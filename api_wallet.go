@@ -11,6 +11,7 @@ package gateapi
 
 import (
 	"context"
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -87,7 +88,7 @@ func (a *WalletApiService) Transfer(ctx context.Context, transfer Transfer) (*ht
 			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
-		return localVarHttpResponse, newErr
+		return localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarHttpResponse, nil

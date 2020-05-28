@@ -11,12 +11,13 @@ package gateapi
 
 import (
 	"context"
+	"errors"
+	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -82,7 +83,7 @@ func (a *MarginApiService) CancelLoan(ctx context.Context, loanId string, curren
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -97,12 +98,12 @@ func (a *MarginApiService) CancelLoan(ctx context.Context, loanId string, curren
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -111,7 +112,7 @@ func (a *MarginApiService) CancelLoan(ctx context.Context, loanId string, curren
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -171,7 +172,7 @@ func (a *MarginApiService) CreateLoan(ctx context.Context, loan Loan) (Loan, *ht
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -186,12 +187,12 @@ func (a *MarginApiService) CreateLoan(ctx context.Context, loan Loan) (Loan, *ht
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -200,7 +201,7 @@ func (a *MarginApiService) CreateLoan(ctx context.Context, loan Loan) (Loan, *ht
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -261,7 +262,7 @@ func (a *MarginApiService) GetLoan(ctx context.Context, loanId string, side stri
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -276,12 +277,12 @@ func (a *MarginApiService) GetLoan(ctx context.Context, loanId string, side stri
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -290,7 +291,7 @@ func (a *MarginApiService) GetLoan(ctx context.Context, loanId string, side stri
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -351,7 +352,7 @@ func (a *MarginApiService) GetLoanRecord(ctx context.Context, loanRecordId strin
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -366,12 +367,12 @@ func (a *MarginApiService) GetLoanRecord(ctx context.Context, loanRecordId strin
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -380,7 +381,7 @@ func (a *MarginApiService) GetLoanRecord(ctx context.Context, loanRecordId strin
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -447,7 +448,7 @@ func (a *MarginApiService) ListFundingAccounts(ctx context.Context, localVarOpti
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -462,12 +463,12 @@ func (a *MarginApiService) ListFundingAccounts(ctx context.Context, localVarOpti
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -476,7 +477,7 @@ func (a *MarginApiService) ListFundingAccounts(ctx context.Context, localVarOpti
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -535,7 +536,7 @@ func (a *MarginApiService) ListFundingBook(ctx context.Context, currency string)
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -550,12 +551,12 @@ func (a *MarginApiService) ListFundingBook(ctx context.Context, currency string)
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -564,7 +565,7 @@ func (a *MarginApiService) ListFundingBook(ctx context.Context, currency string)
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -583,8 +584,8 @@ MarginApiService List repayment records of specified loan
 
 type ListLoanRecordsOpts struct {
 	Status optional.String
-	Page optional.Int32
-	Limit optional.Int32
+	Page   optional.Int32
+	Limit  optional.Int32
 }
 
 func (a *MarginApiService) ListLoanRecords(ctx context.Context, loanId string, localVarOptionals *ListLoanRecordsOpts) ([]LoanRecord, *http.Response, error) {
@@ -643,7 +644,7 @@ func (a *MarginApiService) ListLoanRecords(ctx context.Context, loanId string, l
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -658,12 +659,12 @@ func (a *MarginApiService) ListLoanRecords(ctx context.Context, loanId string, l
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -672,7 +673,7 @@ func (a *MarginApiService) ListLoanRecords(ctx context.Context, loanId string, l
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -731,7 +732,7 @@ func (a *MarginApiService) ListLoanRepayments(ctx context.Context, loanId string
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -746,12 +747,12 @@ func (a *MarginApiService) ListLoanRepayments(ctx context.Context, loanId string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -760,7 +761,7 @@ func (a *MarginApiService) ListLoanRepayments(ctx context.Context, loanId string
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -782,12 +783,12 @@ MarginApiService List all loans
 */
 
 type ListLoansOpts struct {
-	Currency optional.String
+	Currency     optional.String
 	CurrencyPair optional.String
-	SortBy optional.String
-	ReverseSort optional.Bool
-	Page optional.Int32
-	Limit optional.Int32
+	SortBy       optional.String
+	ReverseSort  optional.Bool
+	Page         optional.Int32
+	Limit        optional.Int32
 }
 
 func (a *MarginApiService) ListLoans(ctx context.Context, status string, side string, localVarOptionals *ListLoansOpts) ([]Loan, *http.Response, error) {
@@ -856,7 +857,7 @@ func (a *MarginApiService) ListLoans(ctx context.Context, status string, side st
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -871,12 +872,12 @@ func (a *MarginApiService) ListLoans(ctx context.Context, status string, side st
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -885,7 +886,7 @@ func (a *MarginApiService) ListLoans(ctx context.Context, status string, side st
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -952,7 +953,7 @@ func (a *MarginApiService) ListMarginAccounts(ctx context.Context, localVarOptio
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -967,12 +968,12 @@ func (a *MarginApiService) ListMarginAccounts(ctx context.Context, localVarOptio
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -981,7 +982,7 @@ func (a *MarginApiService) ListMarginAccounts(ctx context.Context, localVarOptio
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1038,7 +1039,7 @@ func (a *MarginApiService) ListMarginCurrencyPairs(ctx context.Context) ([]Margi
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1053,12 +1054,12 @@ func (a *MarginApiService) ListMarginCurrencyPairs(ctx context.Context) ([]Margi
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1067,7 +1068,7 @@ func (a *MarginApiService) ListMarginCurrencyPairs(ctx context.Context) ([]Margi
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1128,7 +1129,7 @@ func (a *MarginApiService) MergeLoans(ctx context.Context, currency string, ids 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1143,12 +1144,12 @@ func (a *MarginApiService) MergeLoans(ctx context.Context, currency string, ids 
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1157,7 +1158,7 @@ func (a *MarginApiService) MergeLoans(ctx context.Context, currency string, ids 
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1219,7 +1220,7 @@ func (a *MarginApiService) RepayLoan(ctx context.Context, loanId string, repayRe
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1234,12 +1235,12 @@ func (a *MarginApiService) RepayLoan(ctx context.Context, loanId string, repayRe
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1248,7 +1249,7 @@ func (a *MarginApiService) RepayLoan(ctx context.Context, loanId string, repayRe
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1311,7 +1312,7 @@ func (a *MarginApiService) UpdateLoan(ctx context.Context, loanId string, loanPa
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1326,12 +1327,12 @@ func (a *MarginApiService) UpdateLoan(ctx context.Context, loanId string, loanPa
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1340,7 +1341,7 @@ func (a *MarginApiService) UpdateLoan(ctx context.Context, loanId string, loanPa
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
@@ -1403,7 +1404,7 @@ func (a *MarginApiService) UpdateLoanRecord(ctx context.Context, loanRecordId st
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	_ =  localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1418,12 +1419,12 @@ func (a *MarginApiService) UpdateLoanRecord(ctx context.Context, loanRecordId st
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHttpResponse, newErr
+				return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHttpResponse, newErr
+			return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
@@ -1432,7 +1433,7 @@ func (a *MarginApiService) UpdateLoanRecord(ctx context.Context, loanRecordId st
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHttpResponse, newErr
+		return localVarReturnValue, localVarHttpResponse, errors.New(newErr.Error())
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil

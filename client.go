@@ -479,7 +479,7 @@ type GenericOpenAPIError struct {
 
 // Error returns non-empty string if there was an error.
 func (e GenericOpenAPIError) Error() string {
-	return e.error
+	return fmt.Sprintf("%s %s", e.error, string(e.body))
 }
 
 // Body returns the raw bytes of the response
