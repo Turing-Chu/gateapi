@@ -26,7 +26,7 @@ type FuturesOrder struct {
 	// Futures contract
 	Contract string `json:"contract"`
 	// Order size. Specify positive number to make a bid, and negative number to ask
-	Size int64 `json:"size,omitempty"`
+	Size int64 `json:"size"`
 	// Display size for iceberg order. 0 for non-iceberg. Note that you would pay the taker fee for the hidden size
 	Iceberg int64 `json:"iceberg,omitempty"`
 	// Order price. 0 for market order with `tif` set as `ioc`
@@ -47,7 +47,7 @@ type FuturesOrder struct {
 	Left int64 `json:"left,omitempty"`
 	// Fill price of the order
 	FillPrice string `json:"fill_price,omitempty"`
-	// User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 16 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance 
+	// User defined information. If not empty, must follow the rules below:  1. prefixed with `t-` 2. no longer than 28 bytes without `t-` prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.) Besides user defined information, reserved contents are listed below, denoting how the order is created:  - web: from web - api: from API - app: from mobile phones - auto_deleveraging: from ADL - liquidation: from liquidation - insurance: from insurance
 	Text string `json:"text,omitempty"`
 	// Taker fee
 	Tkfr string `json:"tkfr,omitempty"`

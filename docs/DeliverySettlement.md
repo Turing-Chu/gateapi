@@ -1,4 +1,4 @@
-# FuturesLiquidate
+# DeliverySettlement
 
 ## Properties
 
@@ -10,12 +10,9 @@ Name | Type | Description | Notes
 **Size** | **int64** | Position size | [optional] [readonly] 
 **Margin** | **string** | Position margin | [optional] [readonly] 
 **EntryPrice** | **string** | Average entry price | [optional] [readonly] 
-**LiqPrice** | **string** | Liquidation price | [optional] [readonly] 
-**MarkPrice** | **string** | Mark price | [optional] [readonly] 
-**OrderId** | **int64** | Liquidation order ID | [optional] [readonly] 
-**OrderPrice** | **string** | Liquidation order price | [optional] [readonly] 
-**FillPrice** | **string** | Liquidation order average taker price | [optional] [readonly] 
-**Left** | **int64** | Liquidation order maker size | [optional] [readonly] 
+**SettlePrice** | **string** | Settled price | [optional] [readonly] 
+**Profit** | **string** | Profit | [optional] [readonly] 
+**Fee** | **string** | Fee deducted | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

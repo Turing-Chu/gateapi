@@ -1,11 +1,12 @@
-# OrderBook
+# OpenOrders
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Asks** | [**[][]string**](array.md) | Asks order depth | 
-**Bids** | [**[][]string**](array.md) | Bids order depth | 
+**CurrencyPair** | **string** | Currency pair | [optional] 
+**Total** | **int32** | Total open orders in this currency pair | [optional] 
+**Orders** | [**[]Order**](Order.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

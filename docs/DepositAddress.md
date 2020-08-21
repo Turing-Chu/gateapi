@@ -1,6 +1,10 @@
 # DepositAddress
 
 ## Properties
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Currency** | **string** | Currency detail | 
